@@ -1,0 +1,118 @@
+using System;
+using System.Collections.Generic;
+
+// Sor perdao enviar dessa forma sem os arquivos para cada classe, tive que baixar um editor no celular e nao consigo por em arquivos diferentes entao separei por comentarios as classes
+
+//Classe Funcionario
+
+public class Funcionario
+{
+    public string Nome;
+    public string CPF;
+    public double SalarioBase;
+
+    public Funcionario(string nome, string cpf, double salarioBase)
+    {
+        Nome = nome;
+        CPF = cpf;
+        SalarioBase = salarioBase;
+    }
+
+    public virtual double CalcularSalarioFinal()
+    {
+        return SalarioBase;
+    }
+
+    public virtual string ExibirDados()
+    {
+        return $"Nome: {Nome} | Salário Final: R$ {CalcularSalarioFinal():F2}";
+    }
+
+    public override string ToString()
+    {
+        return ExibirDados();
+    }
+}
+
+//Classe Gerente
+
+public class Gerente : Funcionario
+{
+    private const double Bonus = 2000.00;
+
+    public Gerente(string nome, string cpf, double salarioBase)
+        : base(nome, cpf, salarioBase)
+    {
+    }
+
+    public override double CalcularSalarioFinal()
+    {
+        return SalarioBase + Bonus;
+    }
+
+    public override string ExibirDados()
+    {
+        return $"Nome: {Nome} Gerente | Salário Final: R$ {CalcularSalarioFinal():F2}";
+    }
+}
+
+
+//Classe:Estagiario
+
+public class Estagiario : Funcionario
+{
+    private const double Desconto = 0.20;
+
+    public Estagiario(string nome, string cpf, double salarioBase)
+        : base(nome, cpf, salarioBase)
+    {
+    }
+
+    public override double CalcularSalarioFinal()
+    {
+        return SalarioBase * (1 - Desconto);
+    }
+
+    public override string ExibirDados()
+    {
+        return $"Nome: {Nome} Estagiário | Salário Final: R$ {CalcularSalarioFinal():F2}";
+    }
+}
+
+
+// Classe FuncionarioComum
+
+public class FuncionarioComum : Funcionario
+{
+    public FuncionarioComum(string nome, string cpf, double salarioBase)
+        : base(nome, cpf, salarioBase)
+    {
+    }
+
+    public override string ExibirDados()
+    {
+        return $"Nome: {Nome} Comum | Salário Final: R$ {CalcularSalarioFinal():F2}";
+    }
+}
+
+
+
+public class Program
+{
+    public static void Main()
+    {
+        List<Funcionario> funcionarios = new List<Funcionario>
+        {
+            new Gerente("Ana", "123.456.789-00", 5000),
+
+            new Estagiario("João", "987.654.321-00", 2000),
+            new FuncionarioComum("Carlos", "111.222.333-44", 3000)
+        };
+
+        Console.WriteLine("--- Lista de Pagamentos ---");
+        foreach (Funcionario f in funcionarios)
+        {
+            Console.WriteLine(f);
+        }
+    }
+}   
