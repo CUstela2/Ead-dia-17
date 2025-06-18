@@ -75,7 +75,7 @@ public class Estagiario : Funcionario
 
     public override string ExibirDados()
     {
-        return $"Nome: {Nome} Estagiário | Salário Final: R$ {CalcularSalarioFinal():F2}";
+        return $"Nome: {Nome} Estagiario | Salário Final: R$ {CalcularSalarioFinal():F2}";
     }
 }
 
@@ -91,7 +91,7 @@ public class FuncionarioComum : Funcionario
 
     public override string ExibirDados()
     {
-        return $"Nome: {Nome} Comum | Salário Final: R$ {CalcularSalarioFinal():F2}";
+        return $"Nome: {Nome} Comum | Salario Final: R$ {CalcularSalarioFinal():F2}";
     }
 }
 
@@ -105,11 +105,11 @@ public class Program
         {
             new Gerente("Ana", "123.456.789-00", 5000),
 
-            new Estagiario("João", "987.654.321-00", 2000),
+            new Estagiario("Joao", "987.654.321-00", 2000),
             new FuncionarioComum("Carlos", "111.222.333-44", 3000)
         };
 
-        Console.WriteLine("--- Lista de Pagamentos ---");
+        Console.WriteLine("Lista de Pagamentos");
         foreach (Funcionario f in funcionarios)
         {
             Console.WriteLine(f);
