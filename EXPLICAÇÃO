@@ -1,0 +1,7 @@
+a classe contabancaria foi feita de um jeito simples pra facilitar o uso:
+	•	os dados da conta (nome do titular, número e saldo) ficam guardados só dentro da classe, pra evitar que sejam alterados sem controle.
+	•	tem um construtor que já cria a conta com tudo que precisa: nome, número e saldo inicial (aceita 0 ou mais).
+	•	o método depositar só aceita valores a partir de 1 real e soma no saldo. o sacar só funciona se tiver saldo suficiente.
+	•	o exibirinformacoes mostra os dados da conta direitinho, sem deixar ninguém mudar nada por fora.
+
+organizei assim pra deixar tudo mais seguro, fácil de entender e funcionando sem complicação
